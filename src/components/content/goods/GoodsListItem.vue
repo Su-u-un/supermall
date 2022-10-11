@@ -1,6 +1,6 @@
 <template>
   <div class="goods-item" @click="itemClick">
-    <img :src="goodsItem.show.img" alt="">
+    <img :src="showImage(goodsItem)" alt="">
     <div class="goods-info">
       <p>{{goodsItem.title}}</p>
       <span class="price">{{goodsItem.price}}</span>
@@ -24,8 +24,12 @@ export default {
     // imageLoad(){
     //   this.$bus.$emit('itemImageLoad')
     // }
-    itemClick(){
-      this.$router.push('/detail/'+this.goodsItem.iid)
+    itemClick(item){
+      this.$router.push('/detail/' + this.goodsItem.iid)
+    },
+    //动态显示图片
+    showImage(item){
+      return item.img || item.image ||item.show.img;
     }
   }
 }

@@ -7,7 +7,7 @@
       <div slot="center" class="title">
         <div v-for="(item,index) in titles"
              class="titleItem"
-             :class="{active : index === currentIndex}"
+             :class="{active : index === currentIndex_1 || index === currentIndex}"
              @click="itemClick(index)">
           {{item}}
         </div>
@@ -24,18 +24,33 @@ export default {
   components:{
     navBar
   },
+  props:{
+    currentIndex:{
+      type:Number,
+      default(){
+        return 0
+      }
+    }
+  },
   data(){
     return{
       titles:['商品','参数','评论','推荐'],
-      currentIndex : 0
+      currentIndex_1 : 0 || this.currentIndex,
+      // currentIndex_2 : 0
     }
   },
   methods:{
     itemClick(index){
-      this.currentIndex = index
+      this.currentIndex_1 = index
+      this.$emit('itemClick',index)
     },
     back(){
       this.$router.back()
+    }
+  },
+  watch:{
+    'currentIndex':function (newval){
+      this.currentIndex_1 = newval
     }
   }
 }

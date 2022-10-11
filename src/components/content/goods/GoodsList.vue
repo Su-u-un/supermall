@@ -1,6 +1,9 @@
 <template>
-  <div class="goods">
-    <goods-list-item v-for="(item,id) in goods" :goods-item="item" :key="id"/>
+  <div>
+    <p class="recommend" v-show="isRecommend">推荐商品</p>
+    <div class="goods">
+      <goods-list-item v-for="(item,id) in goods" :goods-item="item" :key="id"/>
+    </div>
   </div>
 </template>
 
@@ -14,6 +17,12 @@ export default {
       type:Array,
       default(){
         return []
+      }
+    },
+    isRecommend:{
+      type:Boolean,
+      default(){
+        return false
       }
     }
   },
@@ -31,6 +40,10 @@ export default {
 
   padding: 2px;
 }
-
+.recommend {
+  text-align: center;
+  font-size: 17px;
+  padding: 10px 0;
+}
 
 </style>
