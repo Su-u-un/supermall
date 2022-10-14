@@ -19,13 +19,6 @@ export default {
   // id相同的时候购物车叠加数量
   [ADD_COUNTER](state, result) {
     result.count++;
-    Toast({
-      type: "success",
-      message: `当前商品数量为${result.count}`,
-      // 弹框的时候禁止点击
-      forbidClick: true,
-      duration: 1500
-    });
     localStorage.setItem("cartList", JSON.stringify(state.cartList));
   },
   // 往购物车push数据
@@ -33,13 +26,6 @@ export default {
     data.count = 1;
     data.checked = false;
     state.cartList.push(data);
-    Toast({
-      type: "success",
-      message: `加入购物车成功`,
-      // 弹框的时候禁止点击
-      forbidClick: true,
-      duration: 1500
-    });
     localStorage.setItem("cartList", JSON.stringify(state.cartList));
   },
   // 清空购物车

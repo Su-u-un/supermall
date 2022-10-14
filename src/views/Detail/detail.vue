@@ -14,7 +14,7 @@
       <GoodsList :goods="recommendList" :is-recommend="true" ref="recommend"/>
     </Scroll>
     <back-top @click.native="backClick" v-show="isShowBackTop"/>
-    <DetailBottomBar/>
+    <DetailBottomBar @addToCart="addToCart"/>
   </div>
 </template>
 
@@ -60,7 +60,7 @@ export default {  name: "detail",
       thePosition:[],
       dadIndex:0,
       recommendList:[],
-      positionY:0
+      positionY:0,
     }
     },
   beforeCreate() {
@@ -72,6 +72,7 @@ export default {  name: "detail",
 
     getDetail(this.iid).then(res=>{
       const data = res.data.result
+      // console.log(goodsdata);
       //轮播图数据
       this.topItem = data.itemInfo.topImages
       //商品数据信息
@@ -156,6 +157,21 @@ export default {  name: "detail",
     itemClick(index){
       // console.log(index);
       this.$refs.scroll.scrollTo(0,-this.thePosition[index])
+    },
+    addToCart(){
+      // console.log('....');
+
+      const product = {
+        image: this.topItem[0],
+        title: this.goods.title,
+        desc: this.goods.desc,
+        price: this.goods.realPrice,
+        id: this.iid
+      };
+      console.log(product);
+      this.$toast.Show('加入购物车成功！')
+      // console.log(product);
+      this.$store.dispatch('setCateGoryData', product);
     }
   },
   // watch:{
