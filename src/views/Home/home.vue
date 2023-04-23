@@ -19,9 +19,7 @@
                    @tabClick="tabClick"/>
       <goods-list :goods="showGoods" />
     </Scroll>
-
     <back-top @click.native="backClick" v-show="isShowBackTop"/>
-
   </div>
 </template>
 

@@ -4,7 +4,7 @@ import axios from "axios"
 
 export function request(config){
   const instance1 = axios.create({
-    baseURL:'真实接口请联系coderwhy001',
+    baseURL:'http://152.136.185.210:7878/api/hy66',
     timeout:5000
   })
 

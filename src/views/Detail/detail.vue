@@ -33,7 +33,9 @@ import backTop from "@/components/content/backtop/BackTop";
 import {getDetail,getRecommend,Goods,Shop,GoodsParams} from "@/network/detail";
 import Scroll from "@/components/common/scroll/Scroll";
 
-export default {  name: "detail",
+export default {
+  // eslint-disable-next-line vue/multi-word-component-names
+  name: 'detail',
   components:{
     DetailNavBar,
     DetailSwiper,
@@ -62,7 +64,7 @@ export default {  name: "detail",
       recommendList:[],
       positionY:0,
     }
-    },
+  },
   beforeCreate() {
     // 进入详情页隐藏tabBar
     this.$store.commit("setTabBarShow", false);
